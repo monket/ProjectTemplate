@@ -45,7 +45,9 @@ dotnet clean
 dotnet restore
 dotnet build
 
-git config --global init.defaultBranch main
 git init
+git add .
+git commit -m "Initial commit"
+git branch -m main
 
 Set-Location $originalDirectory
