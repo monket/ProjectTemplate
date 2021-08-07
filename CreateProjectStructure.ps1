@@ -1,4 +1,4 @@
-param([String]$projectName, [String]$parentDirectory="C:\Dev\Scratch\")
+param([String]$projectName, [String]$projectType="worker", [String]$parentDirectory="C:\Dev\Scratch\")
 
 $originalDirectory = Get-Location
 
@@ -8,7 +8,7 @@ Set-Location -Path ".\$projectName"
 New-Item -Path ".\" -Name "config" -ItemType "directory"
 
 dotnet new sln -n $projectName
-dotnet new web -n $projectName -o ".\src\$projectName" -lang c# -f net5.0
+dotnet new $projectType -n $projectName -o ".\src\$projectName" -lang c# -f net5.0
 dotnet new xunit -n "$projectName.Tests" -o ".\test\$projectName.Tests" -f net5.0
 dotnet new xunit -n "$projectName.Acceptance.Tests" -o ".\test\$projectName.Acceptance.Tests" -f net5.0
 
