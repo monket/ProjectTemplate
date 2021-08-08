@@ -22,7 +22,6 @@ dotnet add ".\test\$projectName.Tests\$projectName.Tests.csproj" package "AutoFi
 dotnet add ".\test\$projectName.Acceptance.Tests\$projectName.Acceptance.Tests.csproj" package "AutoFixture.AutoMoq"
 dotnet add ".\test\$projectName.Acceptance.Tests\$projectName.Acceptance.Tests.csproj" package "Xbehave"
 
-dotnet tool install --global dotnet-giio --version 1.0.2
 dotnet giio generate visualstudio
 
 $projectGuid = '{2150E333-8FDC-42A3-9474-1A3956D46DE8}'
@@ -49,5 +48,8 @@ git init
 git add .
 git commit -m "Initial commit"
 git branch -m main
+
+gh repo create --public
+git push --set-upstream origin main
 
 Set-Location $originalDirectory
