@@ -1,4 +1,4 @@
-param([String]$projectName, [String]$projectType="worker", [String]$parentDirectory="C:\Dev\Scratch\")
+param([String]$projectName, [String]$projectType="worker", [String]$parentDirectory="C:\Dev\Scratch\", [bool]$pushToGitHub=$False)
 
 $originalDirectory = Get-Location
 
@@ -49,7 +49,9 @@ git add .
 git commit -m "Initial commit"
 git branch -m main
 
-gh repo create --public
-git push --set-upstream origin main
+if ($pushToGitHub) {
+    gh repo create --public
+    git push --set-upstream origin main    
+}
 
 Set-Location $originalDirectory
